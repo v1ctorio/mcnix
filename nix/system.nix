@@ -35,14 +35,44 @@
 
   hardware.opengl.driSupport32Bit = true;
   hardware.pulseaudio.enable = true;
-  services.pipewire = {
-    enable = true;  
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  }
+  services.  services = {
+    xserver = {
+      enable = true;
+      libinput.enable = true;
+      
+      # only if nvidia is true
+      videoDrivers = [ "nvidia" ];
+
+      layout = "${keyboardLayout}";
+
+      displayManager.sddm = {
+        enable = true;
+      };
+
+      # only if autologin is true
+      displayManager.autologin = {
+        enable = true;
+        user = "${username}";
+      };
+
+      windowManager.i3 = {
+        enable = true;
+        # i3 configuration is in home-manager
+      }
+    };
+
+
+    pipewire = {
+      enable = true;  
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    }; 
+
+
+  };
+
   
-  services.xserver.libinput.enable = true;
   
   nix.settings.auto-optimize-store = true;
 }

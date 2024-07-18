@@ -1,0 +1,39 @@
+{
+    "accounts": [
+        {
+            "entitlement": {
+                "canPlayMinecraft": true,
+                "ownsMinecraft": true
+            },
+            "type": "Offline"
+        },
+        {
+            "active": true,
+            "entitlement": {
+                "canPlayMinecraft": true,
+                "ownsMinecraft": true
+            },
+            "profile": {
+                "capes": [
+                ],
+                "id": "${id}",
+                "name": "vic",
+                "skin": {
+                    "id": "",
+                    "url": "",
+                    "variant": ""
+                }
+            },
+            "type": "Offline",
+            "ygg": {
+                "extra": {
+                    "clientToken": "what does client token mean?",
+                    "userName": "vic"
+                },
+                "iat": "WHAT IS A IAT????",
+                "token": "0"
+            }
+        }
+    ],
+    "formatVersion": 3
+}
