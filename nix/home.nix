@@ -19,11 +19,16 @@
   #     xxx
   # '';
 
+  home.file.".local/share/PrismLauncher/accounts.json" = {
+    source = ../assets/prism/accounts.json;
+  }
 
-  # Packages that should be installed to the user profile.
+  home.file.".local/share/PrismLauncher/config.json" = {
+    source = ../assets/prism/config.json;
+  }
+
+
   home.packages = with pkgs; [
-    # here is some command line tools I use frequently
-    # feel free to add your own or remove some of them
 
     neofetch
     nnn 
@@ -41,7 +46,6 @@
     usbutils
   ];
 
-  # basic configuration of git, please change to your own
   programs.git = {
     enable = true;
   };
@@ -71,13 +75,6 @@
   };
 
   # This value determines the home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update home Manager without changing this value. See
-  # the home Manager release notes for a list of state version
-  # changes in each release.
   home.stateVersion = "24.05";
 
   # Let home Manager install and manage itself.
