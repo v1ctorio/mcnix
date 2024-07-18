@@ -5,7 +5,7 @@
   home.homeDirectory = username;
 
   # link the configuration file in current directory to the specified location in home directory
-  home.file.".config/i3/wallpaper.jpg".source = ../assets/wallpaper.jpg;
+  home.file."wallpapers/wallpaper.jpg".source = ../assets/wallpaper.jpg;
 
   # link all files in `./scripts` to `~/.config/i3/scripts`
   # home.file.".config/i3/scripts" = {
@@ -20,11 +20,7 @@
   # '';
 
   home.file.".local/share/PrismLauncher/accounts.json" = {
-    source = ../assets/prism/accounts.json;
-  }
-
-  home.file.".local/share/PrismLauncher/config.json" = {
-    source = ../assets/prism/config.json;
+    source = ../assets/prism/accounts.json
   }
 
 
@@ -42,8 +38,10 @@
 
     glow 
     btop
-
     usbutils
+
+    feh 
+    prismlauncher
   ];
 
   programs.git = {

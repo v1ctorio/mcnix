@@ -1,0 +1,47 @@
+set $mod                             Mod4
+set $smod                            Shift
+set $wm_setting_key_left             Left
+set $wm_setting_key_down             Down
+set $wm_setting_key_up               Up
+set $wm_setting_key_right            Right
+
+set $minecraft                      prism
+set $terminal                       alacritty
+set $app_launcher                   dmenu_run
+
+bindsym $mod+Return exec $terminal
+
+
+# Start a program launcher
+bindsym $mod+d exec $app_launcher
+
+exec_always --no-startup-id $minecraft
+exec_always feh --bg-fill ~/wallpapers/wallpaper.jpg
+
+set $ws1  "    1    "
+set $ws2  "    2    "
+set $ws3  "    3    "
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+
+# Move focused container to workspace n
+bindsym $mod+$smod+1 move container to workspace $ws1
+bindsym $mod+$smod+2 move container to workspace $ws2
+bindsym $mod+$smod+3 move container to workspace $ws3
+
+bindsym $mod+$wm_setting_key_left        focus left
+bindsym $mod+$wm_setting_key_down        focus down
+bindsym $mod+$wm_setting_key_up          focus up
+bindsym $mod+$wm_setting_key_right       focus right
+
+bindsym $mod+$smod+$wm_setting_key_left  move left
+bindsym $mod+$smod+$wm_setting_key_down  move down
+bindsym $mod+$smod+$wm_setting_key_up    move up
+bindsym $mod+$smod+$wm_setting_key_right move right
+
+bindsym $mod+f fullscreen toggle
+bindsym $mod+$smod+f floating toggle
+bindsym $mod+$smod+q kill
+bindsym $mod+$smod+r restart
