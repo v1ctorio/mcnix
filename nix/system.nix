@@ -1,11 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let 
   configs = ../configs.nix;
 in
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+#      ./hardware-configuration.nix
     ];
 
   users.users."${configs.username}" = {
@@ -61,7 +61,7 @@ in
       windowManager.i3 = {
         enable = true;
         # i3 configuration is in home-manager
-      }
+      };
     };
 
 

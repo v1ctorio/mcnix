@@ -8,10 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
-  outputs = inputs@{ self, nixpkgs }: {
-
-        
+  outputs = inputs@{ self, nixpkgs, home-manager }: {
     nixosConfigurations.mc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs= { inherit inputs; };
@@ -23,7 +20,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
-            home-manager.users."${username}" = import ./nix/home.nix;
+            home-manager.users."${(import ./configs.nix).username}" = import ./nix/home.nix;
 
             # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
           }
