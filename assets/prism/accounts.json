@@ -16,8 +16,8 @@
             "profile": {
                 "capes": [
                 ],
-                "id": "${id}",
-                "name": "vic",
+                "id": "@id@",
+                "name": "@username@",
                 "skin": {
                     "id": "",
                     "url": "",
@@ -27,10 +27,10 @@
             "type": "Offline",
             "ygg": {
                 "extra": {
-                    "clientToken": "what does client token mean?",
-                    "userName": "vic"
+                    "clientToken": "@clientToken@",
+                    "userName": "@id@"
                 },
-                "iat": "WHAT IS A IAT????",
+                "iat": "@iat@",
                 "token": "0"
             }
         }
