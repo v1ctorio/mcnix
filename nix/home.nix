@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
-
+let 
+  configs = import ../configs.nix;
+in
 {
   home.username = username;
   home.homeDirectory = username;
@@ -26,10 +28,10 @@
       #prismAccounts = (builtins.readFile ../assets/prism/accounts.json);
       prismAccounts = substituteAll {
         src=../assets/prism/accounts.json;
-        inherit username;
-        id = mcuid;
-        inherit iat;
-        inherit clientToken;
+        username = constants.username;
+        id = constants.mcuid;
+        iat = constants.iat;
+        clientToken = constants.clientToken;
       };
     in ''
       rm -f ${prismLauncherDir}/accounts.json

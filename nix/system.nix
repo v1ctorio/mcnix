@@ -1,14 +1,17 @@
 { config, pkgs, ... }:
+let 
+  configs = ../configs.nix;
+in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
-  users.users."${username}" = {
+  users.users."${configs.username}" = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
-    home = "/home/${username}";
+    home = "/home/${configs.username}";
     shell = "${pkgs.zsh}/bin/zsh";
     };
   boot = {
@@ -29,8 +32,8 @@
   };
 
   i18n = {
-    consoleKeyMap = "${keyboardLayout}";
-    defaultLocale = "${locale}";
+    consoleKeyMap = "${configs.keyboardLayout}";
+    defaultLocale = "${configs.locale}";
   };
 
   hardware.opengl.driSupport32Bit = true;
@@ -41,9 +44,9 @@
       libinput.enable = true;
       
       # only if nvidia is true
-      videoDrivers = [ "nvidia" ];
+      videoDrivers = lib.mkIf configs.nvidia [ "nvidia" ];
 
-      layout = "${keyboardLayout}";
+      layout = "${configs.keyboardLayout}";
 
       displayManager.sddm = {
         enable = true;
@@ -52,7 +55,7 @@
       # only if autologin is true
       displayManager.autologin = {
         enable = true;
-        user = "${username}";
+        user = "${configs.username}";
       };
 
       windowManager.i3 = {
