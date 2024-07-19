@@ -17,10 +17,18 @@
   # encode the file content in nix configuration file directly
   # home.file.".xxx".text = ''
   #     xxx
-  # '';
+  #: '';
 
-  home.file.".local/share/PrismLauncher/accounts.json" = {
-    source = ../assets/prism/accounts.json
+  
+  home.activation = {
+    writePrismConfig = let
+      prismLauncherDir = "${config.home.homeDirectory}/.local/share/PrismLauncher";
+      prismAccounts = (builtins.readFile ../assets/prism/accounts.json);
+    in ''
+      rm -f ${prismLauncherDir}/accounts.json
+      echo "Copying prism/accounts.json to ${prismLauncherDir}/accounts.json"
+      echo ${prismAccounts} > ${prismLauncherDir}/accounts.json
+    ''
   }
 
 
