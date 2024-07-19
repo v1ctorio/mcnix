@@ -23,7 +23,14 @@
   home.activation = {
     writePrismConfig = let
       prismLauncherDir = "${config.home.homeDirectory}/.local/share/PrismLauncher";
-      prismAccounts = (builtins.readFile ../assets/prism/accounts.json);
+      #prismAccounts = (builtins.readFile ../assets/prism/accounts.json);
+      prismAccounts = substituteAll {
+        src=../assets/prism/accounts.json;
+        inherit username;
+        id = mcuid;
+        inherit iat;
+        inherit clientToken;
+      };
     in ''
       rm -f ${prismLauncherDir}/accounts.json
       echo "Copying prism/accounts.json to ${prismLauncherDir}/accounts.json"
